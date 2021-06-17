@@ -1,0 +1,63 @@
+{
+  "name": "@mcswap/java-tron-provider",
+  "version": "0.3.7",
+  "description": "Web3 provider that uses the `java-tron` HTTP API.",
+  "type": "module",
+  "main": "./commonjs/lib/index.js",
+  "exports": {
+    "node": {
+      "import": "./src/index.node.js",
+      "require": "./commonjs/lib/index.node.js"
+    },
+    "web": {
+      "import": "./src/index.web.js",
+      "require": "./commonjs/lib/index.web.js"
+    }
+  },
+  "scripts": {
+    "start": "node bin/proxy-server.js",
+    "start:nile": "TRON_NETWORK=nile npm start",
+    "start:shasta": "TRON_NETWORK=shasta npm start",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "test": "ava"
+  },
+  "bin": {
+    "java-tron-web3-proxy": "./bin/proxy-server.js"
+  },
+  "ava": {
+    "timeout": "120s",
+    "files": [
+      "!commonjs/**/*"
+    ]
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "axios-retry": "^3.1.8",
+    "body-parser": "^1.19.0",
+    "convict": "^6.0.0",
+    "cross-fetch": "^3.0.5",
+    "debug": "^4.1.1",
+    "elliptic": "^6.5.3",
+    "eth-json-rpc-middleware": "^5.0.2",
+    "express": "^4.17.1",
+    "express-async-wrap": "^1.0.0",
+    "json-rpc-engine": "^5.3.0",
+    "morgan": "^1.10.0",
+    "p-limit": "^3.0.2",
+    "promise-retry": "^2.0.1",
+    "protobufjs": "^6.10.1",
+    "safe-event-emitter": "^1.0.1",
+    "web3": "^1.2.11",
+    "web3-provider-engine": "^15.0.12"
+  },
+  "devDependencies": {
+    "ava": "^3.11.1",
+    "ethers": "^5.0.9",
+    "nodemon": "^2.0.4",
+    "solc": "^0.5.17",
+    "tronweb": "^3.0.0",
+    "typescript": "^4.0.2"
+  }
+}
